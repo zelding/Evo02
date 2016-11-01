@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using Evo01.Models;
 
-
 namespace Evo01.Contracts
 {
-    interface IChromosome
+    interface ISpecies
     {
-        List<Gene> GetGenes();
+        List<Chromosome> GetChromosomes();
     }
 }

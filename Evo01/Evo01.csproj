@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Contracts\IChromosome.cs" />
     <Compile Include="Contracts\IGene.cs" />
+    <Compile Include="Contracts\ISpecies.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

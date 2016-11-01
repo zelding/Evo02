@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Evo01.Models
 {
-    class Species
+    class Species : Contracts.ISpecies
     {
         public readonly string Name;
         private List<Chromosome> Chromosomes;
