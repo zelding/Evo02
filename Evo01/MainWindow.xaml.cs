@@ -21,10 +21,17 @@ namespace Evo01
     /// </summary>
     public partial class MainWindow : Window
     {
+        internal List<Models.Species> Population;
+
         public MainWindow()
         {
             InitializeComponent();
-            new Evo01.Models.Chromosome("Base");
+            this.Population = new List<Models.Species>();
+        }
+
+        private void populate_Click(object sender, RoutedEventArgs e)
+        {
+            this.Population.Add(new Models.Species("Test subject Alpha"));
         }
     }
 }

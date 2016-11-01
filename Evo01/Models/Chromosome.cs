@@ -9,23 +9,28 @@ namespace Evo01.Models
     /// </summary>
     class Chromosome : IChromosome
     {
-        public readonly string name;
+        public enum ChromosomeTypes { Sensor = 0, Movement = 1, Interaction = 2, Decision = 3 };
+        public readonly ChromosomeTypes Type;
 
-        private uint generation;
-        private List<Gene> genes;
+        private List<Gene> Genes;
 
         /// <summary>
         /// 
         /// </summary>
-        public Chromosome(string name)
+        public Chromosome(ChromosomeTypes Type)
         {
-            this.generation = 0;
-            this.name = name;
+            this.Type = Type;
+            this.Genes = new List<Gene>();
 
-            foreach( Gene.Types type in Enum.GetValues(typeof(Gene.Types)) )
+            foreach( Gene.GeneTypes type in Enum.GetValues(typeof(Gene.GeneTypes)) )
             {
-                this.genes.Add(new Gene(type));
+                this.Genes.Add(new Gene(type));
             }
+        }
+
+        public List<Gene> GetGenes()
+        {
+            return this.Genes;
         }
     }
 }

@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Button x:Name="populate" Content="Populate" HorizontalAlignment="Left" Height="26" Margin="10,284,0,0" VerticalAlignment="Top" Width="81" IsDefault="True" ToolTip="Start generating Individuals" Click="populate_Click"/>
     </Grid>
 </Window>

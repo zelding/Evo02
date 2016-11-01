@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Models\Chromosome.cs" />
     <Compile Include="Models\Gene.cs" />
+    <Compile Include="Models\Species.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
