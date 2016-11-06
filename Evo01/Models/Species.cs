@@ -10,18 +10,33 @@ namespace Evo01.Models
 
         public Species(string name)
         {
-            this.Name = name;
-            this.Chromosomes = new List<Chromosome>();
+            Name = name;
+            Chromosomes = new List<Chromosome>();
 
             foreach (Chromosome.ChromosomeTypes type in Enum.GetValues(typeof(Chromosome.ChromosomeTypes)))
             {
-                this.Chromosomes.Add(new Chromosome(type));
+                Chromosomes.Add(new Chromosome(type));
             }
         }
 
         public List<Chromosome> GetChromosomes()
         {
-            return this.Chromosomes;
+            return Chromosomes;
+        }
+
+        public override string ToString()
+        {
+            string str = "Chromosomes: \n" + 
+                "_______________\n";
+
+            foreach(Chromosome chr in Chromosomes)
+            {
+                str += chr.Type + ": \n" +
+                    "...............\n" + 
+                    chr.ToString();
+            }
+
+            return str;
         }
     }
 }

@@ -15,5 +15,14 @@ namespace Evo01.Models
             this.type = type;
             this.value = (value != 0) ? value : new Random().NextDouble();
         }
+
+        public override string ToString()
+        {
+            string str = "";
+
+            str += type.ToString() + "=" + value + "\n";
+
+            return str;
+        }
     }
 }

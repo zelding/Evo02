@@ -20,17 +20,29 @@ namespace Evo01.Models
         public Chromosome(ChromosomeTypes Type)
         {
             this.Type = Type;
-            this.Genes = new List<Gene>();
+            Genes = new List<Gene>();
 
             foreach( Gene.GeneTypes type in Enum.GetValues(typeof(Gene.GeneTypes)) )
             {
-                this.Genes.Add(new Gene(type));
+                Genes.Add(new Gene(type));
             }
         }
 
         public List<Gene> GetGenes()
         {
-            return this.Genes;
+            return Genes;
+        }
+
+        public override string ToString()
+        {
+            string str = "";
+
+            foreach( Gene gene in Genes )
+            {
+                str += gene.ToString();
+            }
+
+            return str;
         }
     }
 }

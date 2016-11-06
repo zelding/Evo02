@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Evo01;
 
 namespace Evo01
 {
@@ -21,17 +20,18 @@ namespace Evo01
     /// </summary>
     public partial class MainWindow : Window
     {
-        internal List<Models.Species> Population;
+        internal Models.Population Population;
 
         public MainWindow()
         {
-            InitializeComponent();
-            this.Population = new List<Models.Species>();
+            InitializeComponent();          
         }
 
         private void populate_Click(object sender, RoutedEventArgs e)
         {
-            this.Population.Add(new Models.Species("Test subject Alpha"));
+            Population = new Models.Population(10, true);
+
+            Debug.Text = Population.ToString();
         }
     }
 }

@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Evo01"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="877.377" Width="932">
     <Grid>
-        <Button x:Name="populate" Content="Populate" HorizontalAlignment="Left" Height="26" Margin="10,284,0,0" VerticalAlignment="Top" Width="81" IsDefault="True" ToolTip="Start generating Individuals" Click="populate_Click"/>
+        <Button x:Name="populate" Content="Populate" HorizontalAlignment="Left" Height="26" Margin="10,10,0,0" VerticalAlignment="Top" Width="81" IsDefault="True" ToolTip="Start generating Individuals" Click="populate_Click"/>
+        <TextBlock x:Name="Debug" HorizontalAlignment="Left" Height="827" Margin="503,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="411" AutomationProperties.Name="Debug"/>
     </Grid>
 </Window>
