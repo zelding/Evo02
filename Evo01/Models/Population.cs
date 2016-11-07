@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Evo01.Models
 {
@@ -11,20 +8,21 @@ namespace Evo01.Models
         public const double MUTATION_RATE = 0.05;
 
         protected int size;
+        protected Random rnd;
         protected List<Individual> Individuals;
 
-        public Population(int size, bool init)
+        public Population(int size, bool init, int seed = 0)
         {
             this.size = size;
             Individuals = new List<Individual>();
+            rnd = new Random(seed);
 
             if ( init )
             {
                 for(int i = 0; i < this.size; i++)
                 {
-                    Individual newGuy = new Individual(new Species("DumbFish"));
-                    newGuy.createIndividual();
-                    Individuals.Add(newGuy);
+                    Individual newGuy = new Individual(new Species("DumbFish"), rnd);
+                    Individuals.Add(newGuy.createIndividual());
                 }
             }
         }
@@ -36,10 +34,12 @@ namespace Evo01.Models
 
             foreach(Individual guy in Individuals)
             {
-                str += "Guy " + i.ToString() + ": \n" +
-                    "=====================\n" + 
+                str +=
+                    "Guy " + i.ToString() + ": \n" +
+                    "=====================\n" +
                     "Species: " + guy.species.Name + "\n" +
-                    guy.species.ToString();
+                    guy.species.ToString() +
+                    "=====================\n";
                 i++;
             }
 

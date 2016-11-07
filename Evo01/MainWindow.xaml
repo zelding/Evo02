@@ -8,6 +8,8 @@
         Title="MainWindow" Height="877.377" Width="932">
     <Grid>
         <Button x:Name="populate" Content="Populate" HorizontalAlignment="Left" Height="26" Margin="10,10,0,0" VerticalAlignment="Top" Width="81" IsDefault="True" ToolTip="Start generating Individuals" Click="populate_Click"/>
-        <TextBlock x:Name="Debug" HorizontalAlignment="Left" Height="827" Margin="503,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="411" AutomationProperties.Name="Debug"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="827" Margin="498,10,0,0" VerticalAlignment="Top" Width="416" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Right">
+            <TextBox x:Name="Debug" Height="801" TextWrapping="Wrap" Text="TextBox" Width="396" RenderTransformOrigin="0.475,-0.41" IsInactiveSelectionHighlightEnabled="True" IsManipulationEnabled="True" IsReadOnlyCaretVisible="True" AllowDrop="False"/>
+        </ScrollViewer>
     </Grid>
 </Window>

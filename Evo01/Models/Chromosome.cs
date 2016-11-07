@@ -12,7 +12,7 @@ namespace Evo01.Models
         public enum ChromosomeTypes { Sensor = 0, Movement = 1, Interaction = 2, Decision = 3 };
         public readonly ChromosomeTypes Type;
 
-        private List<Gene> Genes;
+        protected List<Gene> Genes;
 
         /// <summary>
         /// 
@@ -22,7 +22,7 @@ namespace Evo01.Models
             this.Type = Type;
             Genes = new List<Gene>();
 
-            foreach( Gene.GeneTypes type in Enum.GetValues(typeof(Gene.GeneTypes)) )
+            foreach ( Gene.GeneTypes type in Enum.GetValues(typeof(Gene.GeneTypes)) )
             {
                 Genes.Add(new Gene(type));
             }

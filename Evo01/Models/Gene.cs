@@ -8,12 +8,19 @@ namespace Evo01.Models
         public enum GeneTypes { Range = 0, Strength = 1, Speed = 2, Resolution = 3 };
         public readonly GeneTypes type;
 
-        private double value;
+        protected double value;
 
         public Gene(GeneTypes type, double value = 0)
         {
             this.type = type;
-            this.value = (value != 0) ? value : new Random().NextDouble();
+            this.value = value;
+        }
+
+        public Gene setValue(double value)
+        {
+            this.value = value;
+
+            return this;
         }
 
         public override string ToString()
