@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Evo01.Models;
 namespace Evo01
 {
     /// <summary>
@@ -20,7 +21,7 @@ namespace Evo01
     /// </summary>
     public partial class MainWindow : Window
     {
-        internal Models.Population Population;
+        internal Population Population;
 
         public MainWindow()
         {
@@ -29,9 +30,53 @@ namespace Evo01
 
         private void populate_Click(object sender, RoutedEventArgs e)
         {
-            Population = new Models.Population(10, true);
+            Population = new Population(1, true);
 
-            Debug.Text = Population.ToString();
+            Individual fasser = Population.getIndividual(0);
+            Individual indi = new Individual(new Species("DumbFish"));
+            indi.createIndividual(fasser);
+            Population.addIndividual(indi);
+
+            Debug.Text = DisplayObjectInfo(Population) + "\n\n" + Population.ToString();
+        }
+
+        public static string DisplayObjectInfo(Object o)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            // Include the type of the object
+            Type type = o.GetType();
+            sb.Append("Type: " + type.Name);
+
+            // Include information for each Field
+            sb.Append("\r\n\r\nFields:");
+            FieldInfo[] fi = type.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance);
+            if (fi.Length > 0)
+            {
+                foreach (FieldInfo f in fi)
+                {
+                    sb.Append("\r\n " + f.ToString() + " = " + f.GetValue(o));
+                }
+            }
+            else
+                sb.Append("\r\n None");
+
+            // Include information for each Property
+            sb.Append("\r\n\r\nProperties:");
+            PropertyInfo[] pi = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance);
+            if (pi.Length > 0)
+            {
+                foreach (PropertyInfo p in pi)
+                {
+                    sb.Append("\r\n " + p.ToString() + " = " + p.GetValue(o, null));
+                }
+            }
+            else
+            {
+                sb.Append("\r\n None");
+            }
+
+            return sb.ToString();
         }
     }
 }
