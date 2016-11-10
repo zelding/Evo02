@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Evo01.Models;
+
 namespace Evo01
 {
     /// <summary>
@@ -77,6 +78,13 @@ namespace Evo01
             }
 
             return sb.ToString();
+        }
+
+        private void startRenderer_Click(object sender, RoutedEventArgs e)
+        {
+            var form = new Forms.Simulation("test 01");
+
+            form.Run();
         }
     }
 }

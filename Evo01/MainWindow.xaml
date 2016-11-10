@@ -54,5 +54,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="startRenderer" Content="Evaluate" HorizontalAlignment="Left" Height="26" Margin="10,41,0,0" VerticalAlignment="Top" Width="81" Click="startRenderer_Click"/>
     </Grid>
 </Window>
