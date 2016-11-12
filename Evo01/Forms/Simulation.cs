@@ -48,7 +48,7 @@ namespace Evo01.Forms
         private void Draw()
         {
             d3dDeviceContext.OutputMerger.SetRenderTargets(renderTargetView);
-            d3dDeviceContext.ClearRenderTargetView(renderTargetView, new SharpDX.Mathematics.Interop.RawColor4(32, 103, 178, 255));
+            d3dDeviceContext.ClearRenderTargetView(renderTargetView, new Color(32, 103, 178));
             swapChain.Present(1, PresentFlags.None);
         }
 
