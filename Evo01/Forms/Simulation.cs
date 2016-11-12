@@ -3,6 +3,7 @@ using SharpDX.Windows;
 using SharpDX.DXGI;
 using D3D11 = SharpDX.Direct3D11;
 using SharpDX.Direct3D;
+using SharpDX.D3DCompiler;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,16 +24,39 @@ namespace Evo01.Forms
         private D3D11.RenderTargetView renderTargetView;
         private SwapChain swapChain;
 
+        private Vector3[] vertices;
+        private D3D11.Buffer triangleVertexBuffer;
+
+        private D3D11.VertexShader vertexShader;
+        private D3D11.PixelShader pixelShader;
+
+        private D3D11.InputElement[] inputElements = new D3D11.InputElement[]
+        {
+            new D3D11.InputElement("POSITION", 0, Format.R32G32B32_Float, 0)
+        };
+
+        private ShaderSignature inputSignature;
+        private D3D11.InputLayout inputLayout;
+
+        private Viewport viewport;
+
         public Simulation(string text)
         {
             renderForm = new RenderForm(text);
             renderForm.ClientSize = new System.Drawing.Size(Width, Height);
 
             InitializeDeviceResources();
+            InitializeShaders();
+            InitializeTriangle();
         }
 
         public void Dispose()
         {
+            inputLayout.Dispose();
+            inputSignature.Dispose();
+            triangleVertexBuffer.Dispose();
+            vertexShader.Dispose();
+            pixelShader.Dispose();
             renderTargetView.Dispose();
             swapChain.Dispose();
             d3dDevice.Dispose();
@@ -49,6 +73,10 @@ namespace Evo01.Forms
         {
             d3dDeviceContext.OutputMerger.SetRenderTargets(renderTargetView);
             d3dDeviceContext.ClearRenderTargetView(renderTargetView, new Color(32, 103, 178));
+
+            d3dDeviceContext.InputAssembler.SetVertexBuffers(0, new D3D11.VertexBufferBinding(triangleVertexBuffer, Utilities.SizeOf<Vector3>(), 0));
+            d3dDeviceContext.Draw(vertices.Count(), 0);
+
             swapChain.Present(1, PresentFlags.None);
         }
 
@@ -78,6 +106,35 @@ namespace Evo01.Forms
             {
                 renderTargetView = new D3D11.RenderTargetView(d3dDevice, backBuffer);
             }
+
+            viewport = new Viewport(0, 0, Width, Height);
+            d3dDeviceContext.Rasterizer.SetViewport(viewport);
+        }
+
+        private void InitializeTriangle()
+        {
+            vertices = new Vector3[] { new Vector3(-0.5f, 0.5f, 0.0f), new Vector3(0.5f, 0.5f, 0.0f), new Vector3(0.0f, -0.5f, 0.0f) };
+            triangleVertexBuffer = D3D11.Buffer.Create<Vector3>(d3dDevice, D3D11.BindFlags.VertexBuffer, vertices);
+        }
+
+        private void InitializeShaders()
+        {
+            using (var vertexShaderByteCode = ShaderBytecode.CompileFromFile("vertexShader.hlsl", "main", "vs_4_0", ShaderFlags.Debug))
+            {
+                inputSignature = ShaderSignature.GetInputSignature(vertexShaderByteCode);
+                vertexShader = new D3D11.VertexShader(d3dDevice, vertexShaderByteCode);
+            }
+            using (var pixelShaderByteCode = ShaderBytecode.CompileFromFile("pixelShader.hlsl", "main", "ps_4_0", ShaderFlags.Debug))
+            {
+                pixelShader = new D3D11.PixelShader(d3dDevice, pixelShaderByteCode);
+            }
+
+            d3dDeviceContext.VertexShader.Set(vertexShader);
+            d3dDeviceContext.PixelShader.Set(pixelShader);
+            d3dDeviceContext.InputAssembler.PrimitiveTopology = PrimitiveTopology.TriangleList;
+
+            inputLayout = new D3D11.InputLayout(d3dDevice, inputSignature, inputElements);
+            d3dDeviceContext.InputAssembler.InputLayout = inputLayout;
         }
     }
 }
