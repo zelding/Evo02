@@ -82,6 +82,7 @@ namespace Evo01
 
         private void startRenderer_Click(object sender, RoutedEventArgs e)
         {
+            
             var form = new Forms.Simulation("test 01");
 
             form.Run();

@@ -102,13 +102,13 @@ namespace Evo01.Forms
             D3D11.Device.CreateWithSwapChain(DriverType.Hardware, D3D11.DeviceCreationFlags.None, swapChainDesc, out d3dDevice, out swapChain);
             d3dDeviceContext = d3dDevice.ImmediateContext;
 
+            viewport = new Viewport(0, 0, Width, Height);
+            d3dDeviceContext.Rasterizer.SetViewport(viewport);
+
             using (D3D11.Texture2D backBuffer = swapChain.GetBackBuffer<D3D11.Texture2D>(0))
             {
                 renderTargetView = new D3D11.RenderTargetView(d3dDevice, backBuffer);
-            }
-
-            viewport = new Viewport(0, 0, Width, Height);
-            d3dDeviceContext.Rasterizer.SetViewport(viewport);
+            }           
         }
 
         private void InitializeTriangle()
