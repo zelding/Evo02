@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Evo01.Models;
-
+using Evo01.Forms;
 namespace Evo01
 {
     /// <summary>
@@ -82,8 +82,7 @@ namespace Evo01
 
         private void startRenderer_Click(object sender, RoutedEventArgs e)
         {
-            
-            var form = new Forms.Simulation("test 01");
+            Simulation form = new Simulation("test 01");
 
             form.Run();
         }

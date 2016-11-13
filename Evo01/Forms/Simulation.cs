@@ -25,6 +25,7 @@ namespace Evo01.Forms
         private SwapChain swapChain;
 
         private Vector3[] vertices;
+        private Vector4[] vertices2;
         private D3D11.Buffer triangleVertexBuffer;
 
         private D3D11.VertexShader vertexShader;
@@ -48,6 +49,7 @@ namespace Evo01.Forms
             InitializeDeviceResources();
             InitializeShaders();
             InitializeTriangle();
+            //InitializeCube();
         }
 
         public void Dispose()
@@ -113,7 +115,61 @@ namespace Evo01.Forms
 
         private void InitializeTriangle()
         {
-            vertices = new Vector3[] { new Vector3(-0.5f, 0.5f, 0.0f), new Vector3(0.5f, 0.5f, 0.0f), new Vector3(0.0f, -0.5f, 0.0f) };
+            vertices = new Vector3[] {
+                new Vector3(-0.5f, 0.5f, 0.5f), new Vector3(0.5f, 0.5f, 0.5f), new Vector3(0.0f, 0.0f, 0.5f),
+                new Vector3(-0.5f, -0.5f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.5f, -0.5f, 0.0f),
+                new Vector3(-0.3f, 0.3f, 0.0f), new Vector3(0.3f, 0.3f, 0.0f), new Vector3(0.0f, -1.0f, 0.0f),
+            };
+
+            triangleVertexBuffer = D3D11.Buffer.Create<Vector3>(d3dDevice, D3D11.BindFlags.VertexBuffer, vertices);
+        }
+
+        private void InitializeCube()
+        {
+            vertices = new Vector3[] {
+                new Vector3(-1.0f, -1.0f, -0.5f), new Vector3(1.0f, 0.0f, 0.0f), // Front 
+                new Vector3(-1.0f,  1.0f, -0.5f), new Vector3(1.0f, 0.0f, 0.0f),
+                new Vector3( 1.0f,  1.0f, -1.0f), new Vector3(1.0f, 0.0f, 0.0f),
+                new Vector3(-1.0f, -0.5f, -1.0f), new Vector3(1.0f, 0.0f, 0.0f),
+                new Vector3( 0.5f,  1.0f, -1.0f), new Vector3(1.0f, 0.0f, 0.0f),
+                new Vector3( 1.0f, -1.0f, -1.0f), new Vector3(1.0f, 0.0f, 0.0f),
+
+                new Vector3(-0.5f, -1.0f,  1.0f), new Vector3(0.0f, 1.0f, 0.0f), // BACK 
+                new Vector3( 1.0f,  1.0f,  1.0f), new Vector3(0.0f, 1.0f, 0.0f),
+                new Vector3(-1.0f,  1.0f,  1.0f), new Vector3(0.0f, 1.0f, 0.0f),
+                new Vector3(-1.0f, -1.0f,  1.0f), new Vector3(0.0f, 1.0f, 0.0f),
+                new Vector3( 1.0f, -1.0f,  1.0f), new Vector3(0.0f, 1.0f, 0.0f),
+                new Vector3( 1.0f,  1.0f,  1.0f), new Vector3(0.0f, 1.0f, 0.0f),
+
+                new Vector3(-1.0f, 1.0f, -1.0f), new Vector3(0.0f, 0.0f, 1.0f), // Top 
+                new Vector3(-1.5f, 1.0f,  1.0f), new Vector3(0.0f, 0.0f, 1.0f),
+                new Vector3( 1.0f, 1.0f,  1.0f), new Vector3(0.0f, 0.0f, 1.0f),
+                new Vector3(-1.0f, 1.0f, -1.0f), new Vector3(0.0f, 0.0f, 1.0f),
+                new Vector3( 1.0f, 1.0f,  1.0f), new Vector3(0.0f, 0.0f, 1.0f),
+                new Vector3( 1.0f, 1.0f, -1.0f), new Vector3(0.0f, 0.0f, 1.0f),
+
+                new Vector3(-1.0f,-1.0f, -1.0f), new Vector3(1.0f, 1.0f, 0.0f), // Bottom 
+                new Vector3( 1.0f,-1.0f,  1.0f), new Vector3(1.0f, 1.0f, 0.0f),
+                new Vector3(-1.0f,-1.0f,  1.0f), new Vector3(1.0f, 1.0f, 0.0f),
+                new Vector3(-1.0f,-1.0f, -1.0f), new Vector3(1.0f, 1.0f, 0.0f),
+                new Vector3( 1.0f,-1.0f, -1.0f), new Vector3(1.0f, 1.0f, 0.0f),
+                new Vector3( 1.0f,-1.0f,  1.0f), new Vector3(1.0f, 1.0f, 0.0f),
+
+                new Vector3(-1.0f, -1.0f, -1.0f), new Vector3(1.0f, 0.0f, 1.0f), // Left 
+                new Vector3(-1.0f, -1.0f,  1.0f), new Vector3(1.0f, 0.0f, 1.0f),
+                new Vector3(-1.0f,  1.0f,  1.0f), new Vector3(1.0f, 0.0f, 1.0f),
+                new Vector3(-1.0f, -1.0f, -1.0f), new Vector3(1.0f, 0.0f, 1.0f),
+                new Vector3(-1.0f,  1.0f,  1.0f), new Vector3(1.0f, 0.0f, 1.0f),
+                new Vector3(-1.0f,  1.0f, -1.0f), new Vector3(1.0f, 0.0f, 1.0f),
+
+                new Vector3( 1.0f, -1.0f, -1.0f), new Vector3(0.0f, 1.0f, 1.0f), // Right 
+                new Vector3( 1.0f,  1.0f,  1.0f), new Vector3(0.0f, 1.0f, 1.0f),
+                new Vector3( 1.0f, -1.0f,  1.0f), new Vector3(0.0f, 1.0f, 1.0f),
+                new Vector3( 1.0f, -1.0f, -1.0f), new Vector3(0.0f, 1.0f, 1.0f),
+                new Vector3( 1.0f,  1.0f, -1.0f), new Vector3(0.0f, 1.0f, 1.0f),
+                new Vector3( 1.0f,  1.0f,  1.0f), new Vector3(0.0f, 1.0f, 1.0f),
+            };
+
             triangleVertexBuffer = D3D11.Buffer.Create<Vector3>(d3dDevice, D3D11.BindFlags.VertexBuffer, vertices);
         }
 
