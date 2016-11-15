@@ -161,7 +161,7 @@
     <Compile Include="Models\Individual.cs" />
     <Compile Include="Models\Population.cs" />
     <Compile Include="Models\Species.cs" />
-    <Compile Include="Neuron.cs" />
+    <Compile Include="Neurons\Neuron.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -214,7 +214,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Neurons\" />
     <Folder Include="Organs\" />
     <Folder Include="Senses\" />
   </ItemGroup>

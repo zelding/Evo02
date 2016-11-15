@@ -103,22 +103,25 @@ namespace Evo01.Models
             return Chromosomes;
         }
 
-        public override string ToString()
+        public string ToString(int n = 0)
         {
             string str = "";
+            char tab;
+            bool doit = char.TryParse("\t", out tab);
 
-            str += "Fittness: " + Fittness.ToString() + "\n"
-                + "Energy: " + Energy.ToString() + "\n"
-                + "Age: " + Age.ToString() + "\n";
+            str += "".PadRight(n, tab) + "Fittness: " + Fittness.ToString() + "\n"
+                + "".PadRight(n, tab) + "Energy: " + Energy.ToString() + "\n"
+                + "".PadRight(n, tab) + "Age: " + Age.ToString() + "\n";
 
             if (Parents[0] != null)
             {
-                str += "Parents: \n";
-                str += "\t" + Parents[0].ToString() + "\n";
+                str += "".PadRight(n, tab) + "Parents: \n";
+                str += "".PadRight(n + 1, tab) + Parents[0].ToString() + "\n";
 
                 if ( Parents[1] != null)
                 {
-                    str += "\t" + Parents[1].ToString() + "\n";
+                    str += "".PadRight(n + 1, tab) + Parents[1].ToString() + "\n";
+                    //this is why i did it.
                 }
             }
             return str;

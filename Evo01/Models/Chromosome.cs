@@ -33,13 +33,13 @@ namespace Evo01.Models
             return Genes;
         }
 
-        public override string ToString()
+        public string ToString(int n = 0)
         {
             string str = "";
 
             foreach( Gene gene in Genes )
             {
-                str += gene.ToString();
+                str += gene.ToString(n);
             }
 
             return str;

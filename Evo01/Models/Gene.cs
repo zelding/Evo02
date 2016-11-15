@@ -5,7 +5,7 @@ namespace Evo01.Models
 {
     class Gene :IGene
     {
-        public enum GeneTypes { Range = 0, Strength = 1, Speed = 2, Resolution = 3, field };
+        public enum GeneTypes { Range = 0, Strength = 1, Speed = 2, Resolution = 3, Angle = 4 };
         public readonly GeneTypes Type;
 
         protected double Value;
@@ -28,12 +28,14 @@ namespace Evo01.Models
             return this;
         }
 
-        public override string ToString()
+        public string ToString(int n = 0)
         {
             string str = "";
+            char c;
+            bool doit = Char.TryParse("\t", out c);
 
-            str += Type.ToString() + "=" + Value + "\n";
-
+            str += "".PadRight(n, c) + Type.ToString() + "=" + Value + "\n";
+            
             return str;
         }
     }

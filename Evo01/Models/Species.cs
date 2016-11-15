@@ -41,16 +41,19 @@ namespace Evo01.Models
             return Chromosomes;
         }
 
-        public override string ToString()
+        public string ToString(int n = 0)
         {
-            string str = "Chromosomes: \n" + 
-                "_______________\n";
+            char tab;
+            bool doit = char.TryParse("\t", out tab);
 
-            foreach(Chromosome chr in Chromosomes)
+            string str = "".PadRight(n, tab) + "Chromosomes: \n" +
+                "".PadRight(n, '_') + "_______________\n";
+
+            foreach (Chromosome chr in Chromosomes)
             {
                 str += chr.Type + ": \n" +
-                    "...............\n" + 
-                    chr.ToString();
+                    "".PadRight(n, '_') + "...............\n" + 
+                    chr.ToString(n);
             }
 
             return str;
