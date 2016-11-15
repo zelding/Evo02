@@ -5,7 +5,7 @@ namespace Evo01.Models
 {
     class Gene :IGene
     {
-        public enum GeneTypes { Range = 0, Strength = 1, Speed = 2, Resolution = 3 };
+        public enum GeneTypes { Range = 0, Strength = 1, Speed = 2, Resolution = 3, field };
         public readonly GeneTypes Type;
 
         protected double Value;

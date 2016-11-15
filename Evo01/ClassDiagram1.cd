@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Evo01.Forms.Simulation" Collapsed="true">
+    <Position X="13.5" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>gASAABABBCAAggAAFQAAAMAEAAAQAAEDAgAQAAAACAI=</HashCode>
+      <FileName>Forms\Simulation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Evo01.Models.Chromosome" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="2" Width="3" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Evo01.Models.Chromosome.ChromosomeTypes">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Chromosome.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAQAAAAQAAAEAAAAA=</HashCode>
+      <FileName>Models\Chromosome.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Genes" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Evo01.Models.Gene" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.75" Width="3" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Evo01.Models.Gene.GeneTypes">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Gene.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAEAAIAAAAAAAAAAAAAAQAgAAAAAAA=</HashCode>
+      <FileName>Models\Gene.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Evo01.Models.Individual" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="2" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAEAEAEAAAAIAAAACAAAAAAAIAIBAI=</HashCode>
+      <FileName>Models\Individual.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Chromosomes" />
+      <Field Name="Parents" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Evo01.Models.Population">
+    <Position X="10.25" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAiAAEAAAAAAAgEAAAAgABAAAAAIAABAA=</HashCode>
+      <FileName>Models\Population.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Individuals" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Evo01.Models.Species" BaseTypeListCollapsed="true">
+    <Position X="7" Y="2" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAQAIAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Species.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Chromosomes" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Evo01.Neuron">
+    <Position X="7.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Neuron.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Evo01.Contracts.IChromosome">
+    <Position X="3.75" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Models\IChromosome.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Evo01.Contracts.IGene">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Models\IGene.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Evo01.Contracts.IIndividual">
+    <Position X="10.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Contracts\Models\IIndividual.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Evo01.Contracts.ISpecies">
+    <Position X="7" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\Models\ISpecies.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

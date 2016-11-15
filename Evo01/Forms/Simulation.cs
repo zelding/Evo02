@@ -23,7 +23,7 @@ namespace Evo01.Forms
         private D3D11.DeviceContext d3dDeviceContext;
         private D3D11.RenderTargetView renderTargetView;
         private SwapChain swapChain;
-
+        
         private Vector3[] vertices;
         private Vector4[] vertices2;
         private D3D11.Buffer triangleVertexBuffer;

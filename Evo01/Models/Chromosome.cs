@@ -9,7 +9,7 @@ namespace Evo01.Models
     /// </summary>
     class Chromosome : IChromosome
     {
-        public enum ChromosomeTypes { Sensor = 0, Movement = 1, Interaction = 2, Decision = 3 };
+        public enum ChromosomeTypes { Sensor = 0, Movement = 1, Interaction = 2, Decision = 3, field };
         public readonly ChromosomeTypes Type;
 
         protected List<Gene> Genes;

@@ -145,10 +145,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Contracts\IChromosome.cs" />
-    <Compile Include="Contracts\IGene.cs" />
-    <Compile Include="Contracts\IIndividual.cs" />
-    <Compile Include="Contracts\ISpecies.cs" />
+    <Compile Include="Contracts\Models\IChromosome.cs" />
+    <Compile Include="Contracts\Models\IGene.cs" />
+    <Compile Include="Contracts\Models\IIndividual.cs" />
+    <Compile Include="Contracts\Models\ISpecies.cs" />
     <Compile Include="Forms\Simulation.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -161,6 +161,7 @@
     <Compile Include="Models\Individual.cs" />
     <Compile Include="Models\Population.cs" />
     <Compile Include="Models\Species.cs" />
+    <Compile Include="Neuron.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -178,6 +179,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="pixelShader.hlsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -210,6 +212,11 @@
     <Content Include="D3DCompiler_47.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Neurons\" />
+    <Folder Include="Organs\" />
+    <Folder Include="Senses\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
