@@ -73,9 +73,9 @@ namespace Evo01.Models
                     "=====================\n" +
                     "Species: " + guy.Species.Name + "\n" +
                     "Indi stuff: \n" +
-                    guy.ToString() + "\n" +
+                    guy.ToString(0) + "\n" +
                     "|X|------------------\n" +
-                    guy.Species.ToString() +
+                    guy.Species.ToString(0) +
                     "=====================\n";
                 i++;
             }
