@@ -54,8 +54,8 @@
       <FileName>Models\Individual.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Field Name="Chromosomes" />
       <Field Name="Parents" />
+      <Property Name="Chromosomes" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>

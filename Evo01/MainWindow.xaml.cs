@@ -31,11 +31,11 @@ namespace Evo01
 
         private void populate_Click(object sender, RoutedEventArgs e)
         {
-            Population = new Population(1, true);
+            Population = new Population(2, true);
 
             Individual fasser = Population.getIndividual(0);
-            Individual indi = new Individual(new Species("DumbFish"));
-            indi.createIndividual(fasser);
+            Individual musser = Population.getIndividual(1);
+            Individual indi = new Individual(new Species("DumbFish"), null, fasser, musser);
             Population.addIndividual(indi);
 
             Debug.Text = DisplayObjectInfo(Population) + "\n\n" + Population.ToString(0);

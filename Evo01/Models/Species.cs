@@ -44,8 +44,8 @@ namespace Evo01.Models
         public string ToString(int n = 0)
         {
             string tabs = new string('\t', n);
-            string unders = new string('_', n * 4);
-            string dots = new string('.', n * 4);
+            string unders = new string('_', n * 18);
+            string dots = new string('.', n * 24);
 
             string str = tabs + "Chromosomes: \n" +
                 unders + "_______________\n";

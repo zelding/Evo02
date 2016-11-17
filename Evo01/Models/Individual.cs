@@ -13,7 +13,7 @@ namespace Evo01.Models
         protected double Fittness;
         protected double Energy;
         protected double Age;
-        protected List<Chromosome> Chromosomes;
+        protected List<Chromosome> Chromosomes { get; set; }
         protected Random Rnd;
         protected Individual[] Parents;
 
@@ -33,6 +33,19 @@ namespace Evo01.Models
             Parents = new Individual[2];
         }
 
+        public Individual(Species species, Random rnd = null, Individual fasser = null, Individual musser = null)
+        {
+            Species = species;
+            Age = 0.0;
+            Energy = 1000.0;
+            Fittness = 0.0;
+            Chromosomes = new List<Chromosome>();
+            Rnd = rnd ?? new Random();
+            Parents = new Individual[2];
+
+            createIndividual(fasser, musser);
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -48,10 +61,24 @@ namespace Evo01.Models
                 {
                     Parents[0] = father;
                     Parents[1] = mother;
-                }
+
+                    int i = 0, j = 0;
+                    List<Chromosome> fatherChromosomes = father.getChromosomes();
+                    List<Chromosome> motherChromosomes = mother.getChromosomes();
+
+                    foreach (Chromosome chr in Chromosomes)
+                    {
+                        j = 0;
+                        foreach (Gene gene in chr.GetGenes())
+                        {
+                            //mix shit up
+                        }
+                    }
             }
             else if(father != null)
             {
+                Parents[0] = father;
+
                 int i = 0, j = 0;
                 List<Chromosome> fatherChromosomes = father.getChromosomes();
 
@@ -76,8 +103,6 @@ namespace Evo01.Models
                     }
                     i++;
                 }
-
-                Parents[0] = father;
             }
             else
             {
