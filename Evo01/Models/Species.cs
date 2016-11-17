@@ -43,16 +43,17 @@ namespace Evo01.Models
 
         public string ToString(int n = 0)
         {
-            char tab;
-            bool doit = char.TryParse("\t", out tab);
+            string tabs = new string('\t', n);
+            string unders = new string('_', n * 4);
+            string dots = new string('.', n * 4);
 
-            string str = "".PadRight(n, tab) + "Chromosomes: \n" +
-                "".PadRight(n, '_') + "_______________\n";
+            string str = tabs + "Chromosomes: \n" +
+                unders + "_______________\n";
 
             foreach (Chromosome chr in Chromosomes)
             {
-                str += chr.Type + ": \n" +
-                    "".PadRight(n, '_') + "...............\n" + 
+                str += tabs +  chr.Type + ": \n" +
+                    dots + "...............\n" + 
                     chr.ToString(n);
             }
 

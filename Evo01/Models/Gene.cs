@@ -31,10 +31,9 @@ namespace Evo01.Models
         public string ToString(int n = 0)
         {
             string str = "";
-            char c;
-            bool doit = Char.TryParse("\t", out c);
+            string tabs = new string('\t', n);
 
-            str += "".PadRight(n, c) + Type.ToString() + "=" + Value + "\n";
+            str += tabs + Type.ToString() + "=" + Value + "\n";
             
             return str;
         }

@@ -106,21 +106,25 @@ namespace Evo01.Models
         public string ToString(int n = 0)
         {
             string str = "";
-            char tab;
-            bool doit = char.TryParse("\t", out tab);
+            string tabs = new string('\t', n);
+            string lines = new string('=', n);
 
-            str += "".PadRight(n, tab) + "Fittness: " + Fittness.ToString() + "\n"
-                + "".PadRight(n, tab) + "Energy: " + Energy.ToString() + "\n"
-                + "".PadRight(n, tab) + "Age: " + Age.ToString() + "\n";
+            str +=
+                  tabs + "Species: " + Species.Name + "\n"
+                + tabs + "Fittness: " + Fittness.ToString() + "\n"
+                + tabs + "Energy: " + Energy.ToString() + "\n"
+                + tabs + "Age: " + Age.ToString() + "\n"
+                + tabs + Species.ToString(n + 1) + "\n"
+                + lines + "=====================\n";
 
             if (Parents[0] != null)
             {
-                str += "".PadRight(n, tab) + "Parents: \n";
-                str += "".PadRight(n + 1, tab) + Parents[0].ToString() + "\n";
+                str += tabs + "Parents: \n";
+                str += tabs + Parents[0].ToString(n + 1) + "\n";
 
                 if ( Parents[1] != null)
                 {
-                    str += "".PadRight(n + 1, tab) + Parents[1].ToString() + "\n";
+                    str += tabs + Parents[1].ToString(n + 1) + "\n";
                     //this is why i did it.
                 }
             }

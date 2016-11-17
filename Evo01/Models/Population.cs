@@ -61,22 +61,22 @@ namespace Evo01.Models
             return Rnd.Next(MIRACLE_CHANCE_FACTOR * 1000) % MIRACLE_CHANCE_FACTOR == 0;
         }
 
-        public override string ToString()
+        public string ToString(int n = 0)
         {
             string str = "";
+            string lines = new string('=', n * 4);
+            string dashes = new string('-', n * 4);
+            string tabs = new string('\t', n);
             int i = 0;
 
             foreach(Individual guy in Individuals)
             {
                 str +=
-                    "Guy " + i.ToString() + ": \n" +
-                    "=====================\n" +
-                    "Species: " + guy.Species.Name + "\n" +
-                    "Indi stuff: \n" +
-                    guy.ToString() + "\n" +
-                    "|X|------------------\n" +
-                    guy.Species.ToString() +
-                    "=====================\n";
+                    tabs + "Guy " + i.ToString() + ": \n" +
+                    lines + "=====================\n" +
+                    tabs + "Indi stuff: \n" +
+                    guy.ToString(n) + "\n" +
+                    "|X|-" + dashes + "-----------------\n";
                 i++;
             }
 

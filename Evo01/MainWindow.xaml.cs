@@ -38,7 +38,7 @@ namespace Evo01
             indi.createIndividual(fasser);
             Population.addIndividual(indi);
 
-            Debug.Text = DisplayObjectInfo(Population) + "\n\n" + Population.ToString();
+            Debug.Text = DisplayObjectInfo(Population) + "\n\n" + Population.ToString(0);
         }
 
         public static string DisplayObjectInfo(Object o)
