@@ -57,7 +57,7 @@ namespace Evo01.Models
 
             if (father != null && mother != null)
             {
-                if( father.Species.Name == mother.Species.Name )
+                if (father.Species.Name == mother.Species.Name)
                 {
                     Parents[0] = father;
                     Parents[1] = mother;
@@ -72,8 +72,10 @@ namespace Evo01.Models
                         foreach (Gene gene in chr.GetGenes())
                         {
                             //mix shit up
+
                         }
                     }
+                }
             }
             else if(father != null)
             {
